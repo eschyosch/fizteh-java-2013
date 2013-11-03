@@ -74,15 +74,21 @@ public class TableInputOutput {
             }
             for (int fileIndex = 0; fileIndex < 16; ++fileIndex) {
                 File tableFile = new File(subDirectory, fileIndex + ".dat");
-                RandomAccessFile outputStream = new RandomAccessFile(tableFile, "w");
-                outputStream.setLength(0);
-                for (String key: dataBase[index][fileIndex].keySet()) {
-                    byte[] bufferKey = key.getBytes(StandardCharsets.UTF_8);
-                    outputStream.writeInt(bufferKey.length);
-                    byte[] bufferValue = dataBase[index][fileIndex].get(key).getBytes(StandardCharsets.UTF_8);
-                    outputStream.writeInt(bufferValue.length);
-                    outputStream.write(bufferKey);
-                    outputStream.write(bufferValue);
+                RandomAccessFile outputStream = new RandomAccessFile(tableFile, "rw");
+                try {
+                    outputStream.setLength(0);
+                    for (String key: dataBase[index][fileIndex].keySet()) {
+                        byte[] bufferKey = key.getBytes(StandardCharsets.UTF_8);
+                        outputStream.writeInt(bufferKey.length);
+                        byte[] bufferValue = dataBase[index][fileIndex].get(key).getBytes(StandardCharsets.UTF_8);
+                        outputStream.writeInt(bufferValue.length);
+                        outputStream.write(bufferKey);
+                        outputStream.write(bufferValue);
+                    }
+                } catch (Exception exception) {
+                    throw exception;
+                } finally {
+                    outputStream.close();
                 }
             }
         }

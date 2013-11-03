@@ -53,9 +53,14 @@ public class TableProviderImplementation implements TableProvider {
     }
 
     public Map[][] getDataBaseToWrite() {
-        Map<String, String>[][] dataBase = new Map[16][16];
+        Map<String, String>[][] dataBase = new HashMap[16][16];
         int hashCode;
         Map<String, String> data;
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                dataBase[i][j] = new HashMap<>();
+            }
+        }
 
         for (String name: tables.keySet()) {
             data = tables.get(name).getData();

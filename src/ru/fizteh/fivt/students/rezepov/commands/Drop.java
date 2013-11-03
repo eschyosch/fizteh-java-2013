@@ -20,9 +20,6 @@ public class Drop implements Command {
     }
 
     public void run(List<String> args) throws IllegalArgumentException, IllegalStateException {
-        if (args.size() != 1) {
-            throw new IllegalArgumentException("Попробуйте в следующий раз передать ровно один аругмент.");
-        }
         String tableName = args.get(1);
         if (tableProvider.getTable(tableName) == null) {
             System.err.println(tableName + " not exists");

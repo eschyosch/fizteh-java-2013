@@ -20,9 +20,6 @@ public class Use implements Command {
     }
 
     public void run(List<String> args) {
-        if (args.size() != 1) {
-            throw new IllegalArgumentException("Нельзя объять всё необъятное, используй только одну.");
-        }
         if (tableProvider.getTable(args.get(1)) != null) {
             tableProvider.setActiveTable(args.get(1));
             System.out.println("using " + args.get(1));

@@ -21,9 +21,6 @@ public class Remove implements Command {
     }
 
     public void run(List<String> args) throws Exception {
-        if (args.size() != 1) {
-            throw new IllegalArgumentException("Не жадничай, три по одному.");
-        }
         Table table = tableProvider.getActiveTable();
         if (table == null) {
             System.out.println("no table");

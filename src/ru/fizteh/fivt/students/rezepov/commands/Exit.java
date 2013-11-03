@@ -21,9 +21,6 @@ public class Exit implements Command {
     }
 
     public void run(List<String> args) throws IllegalArgumentException, IOException {
-        if (args.size() != 0) {
-            throw new IllegalArgumentException("Слишком много аргументов для такой команды.");
-        }
         TableInputOutput.writeTheTables(tableProvider.getDataBaseToWrite(),tableProvider.getSourceDirectory());
         System.exit(0);
     }

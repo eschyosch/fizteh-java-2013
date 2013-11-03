@@ -20,9 +20,6 @@ public class Create implements Command {
     }
 
     public void run(List<String> args) throws IllegalArgumentException {
-        if (args.size() != 1) {
-            throw new IllegalArgumentException("Попробуйте в следующий раз дать 1 аргумент");
-        }
         String tableName = args.get(1);
         if (tableProvider.createTable(tableName) != null) {
             System.err.println(tableName + " exists");

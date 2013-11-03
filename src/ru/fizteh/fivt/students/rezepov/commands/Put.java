@@ -16,13 +16,10 @@ public class Put implements Command {
     }
 
     public int getArgCount() {
-        return 1;
+        return 2;
     }
 
-    public void run(List<String> args) throws Exception {
-        if (args.size() != 0) {
-            throw new IllegalArgumentException("У всех бывают тяжёлые дни, но сюда всё равно нужно 2 аргумента.");
-        }
+    public void run(List<String> args) throws IllegalArgumentException {
         Table table = tableProvider.getActiveTable();
         if (table == null) {
             System.out.println("no table");
