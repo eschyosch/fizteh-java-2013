@@ -97,7 +97,7 @@ public class TableInputOutput {
 
     public static void deleteEmptyDirectories(File directory) throws IOException {
         for (File subDirectory: directory.listFiles()) {
-            if (subDirectory.length() == 0) {
+            if (subDirectory.isDirectory() && subDirectory.length() == 0) {
                 subDirectory.delete();
             } else {
                 deleteEmptyDirectories(subDirectory);
